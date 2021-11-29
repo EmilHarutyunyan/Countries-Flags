@@ -15,6 +15,7 @@ export const HomePage = ({countries, setCountries}) => {
   const [filtredCountries, setFiltredCountries] = useState(countries);
 
   const navigate = useNavigate();
+
  
   const handleSearch = (search, region) => {
     let data = [...countries]
@@ -28,10 +29,17 @@ export const HomePage = ({countries, setCountries}) => {
     }
     setFiltredCountries(data)
   }
+
   useEffect(() => {
     if(!countries.length) axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
     // console.log(countries);
+    // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    handleSearch()
+    // eslint-disable-next-line
+  },[countries])
 
   
   return (
@@ -57,7 +65,7 @@ export const HomePage = ({countries, setCountries}) => {
               },
             ],
           };
-          return <Card key={country.name} onClick={() => navigate(`/country/${country.name}`)} {...countryInfo} />;
+          return <Card key={country.name} onClick={() => navigate(`/country/${country?.name}`)} {...countryInfo} />;
         })}
       </List>
     </>

@@ -10,7 +10,7 @@ import { Main } from "./components/Main/Main";
 // Pages
 import { HomePage } from './pages/HomePage';
 import { NotFound } from './pages/NotFound';
-import { Details } from './pages/Details';
+import { CountryPage } from './pages/CountryPage';
 
 function App() {
   
